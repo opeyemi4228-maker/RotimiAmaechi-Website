@@ -1,5 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { assets } from '@/assets/assets';
+import Image from 'next/image';
 
 const ValiantJoinSection = () => {
   const links = [
@@ -10,15 +12,15 @@ const ValiantJoinSection = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-[#E31E24] lg:px-12 bg-orange-650">
+    <section className="py-20 px-6 bg-[#008751] lg:px-12 bg-orange-650">
       <div className="max-w-7xl mx-auto">
         <div className="bg-gray-100 rounded-3xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             
             {/* Image Side */}
             <div className="relative h-[400px] lg:h-auto">
-              <img
-                src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80"
+              <Image
+                src={assets.Amaechi11}
                 alt="Leadership, service, and national engagement"
                 className="w-full h-full object-cover"
               />

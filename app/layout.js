@@ -3,7 +3,7 @@ import "./globals.css";
 import { AppContextProvider } from "@/context/AppContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Toaster } from "react-hot-toast";
+import ToasterWrapper from "@/components/ToasterWrapper";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body suppressHydrationWarning className={`${nunitoSans.className} antialiased text-gray-700`}>
-        <Toaster />
+        <ToasterWrapper />
         <AppContextProvider>
           <Navbar />
           <main style={{ paddingTop: 104 }}>

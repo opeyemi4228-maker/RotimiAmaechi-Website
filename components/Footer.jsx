@@ -32,7 +32,7 @@ const Footer = () => {
   return (
     <footer className="w-full">
       {/* Red Top Bar */}
-      <div className="bg-[#E31E24] h-6"></div>
+      <div className="bg-[#008751] h-6"></div>
 
       {/* White Section with Social Icons */}
       <div className="bg-white py-12">
@@ -59,7 +59,7 @@ const Footer = () => {
       </div>
 
       {/* Navy Blue Section */}
-      <div className="bg-[#2B4075] text-white">
+      <div className="bg-[#631c02] text-white">
         <div className="max-w-6xl mx-auto px-6 py-12">
           
           {/* Stay Connected Section */}
@@ -100,7 +100,7 @@ const Footer = () => {
             
             {/* Left Side - Disclaimer */}
             <div className="flex-1">
-              <p className="text-xs text-white/90 bg-[#1E2E5A] px-4 py-2 inline-block mb-4">
+              <p className="text-xs text-white/90 bg-[#a93207] px-4 py-2 inline-block mb-4">
                 This platform is dedicated to leadership, public service, and national development.
               </p>
               <p className="text-xs text-white/80 leading-relaxed">

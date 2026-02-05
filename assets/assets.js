@@ -46,9 +46,47 @@ import product_details_page_apple_earphone_image2 from "./product_details_page_a
 import product_details_page_apple_earphone_image3 from "./product_details_page_apple_earphone_image3.png";
 import product_details_page_apple_earphone_image4 from "./product_details_page_apple_earphone_image4.png";
 import product_details_page_apple_earphone_image5 from "./product_details_page_apple_earphone_image5.png";
+import Amaechi1 from "./Amaechi1.webp";
+import Amaechi2 from "./Amaechi2.webp";
+import Amaechi3 from "./Amaechi3.webp";
+import Abujakaduna from "./Abujakaduna.webp";
+import Amaechi from "./Amaechi.jpeg";
+import Amaechi4 from "./Amaechi4.jpeg";
+import Amaechi5 from "./Amaechi5.jpeg";
+import Amaechi6 from "./Amaechi6.jpeg";
+import Amaechi7 from "./Amaechi7.jpeg";
+import Amaechi8 from "./Amaechi8.jpeg";
+import Amaechi9 from "./Amaechi9.jpeg";
+import Amaechi10 from "./Amaechi10.jpeg";
+import Amaechi11 from "./Amaechi11.jpeg";
+import Amaechi12 from "./Amaechi12.jpeg";
+import Amaechi13 from "./Amaechi13.jpeg";
+import Amaechi14 from "./Amaechi14.jpeg";
+import Emir from "./Emir.webp";
+import Grad from "./Grad.webp";
+import Amae from "./Amae.webp";
 
 export const assets = {
   logo,
+  Abujakaduna,
+  Emir,
+  Grad,
+  Amae,
+  Amaechi1,
+  Amaechi2,
+  Amaechi3,
+  Amaechi,
+  Amaechi4,
+  Amaechi5,
+  Amaechi6,
+  Amaechi7,
+  Amaechi8,
+  Amaechi9,
+  Amaechi10,
+  Amaechi11,
+  Amaechi12,
+  Amaechi13,
+  Amaechi14,  
   search_icon,
   user_icon,
   cart_icon,
