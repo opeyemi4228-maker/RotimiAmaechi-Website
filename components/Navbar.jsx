@@ -4,46 +4,16 @@ import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isHeroVisible, setIsHeroVisible] = useState(true);
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  useEffect(() => {
-    setIsHydrated(true);
-    
-    const hero = document.querySelector('#hero');
-    if (hero) {
-      const obs = new IntersectionObserver(
-        ([entry]) => setIsHeroVisible(entry.isIntersecting),
-        { root: null, threshold: 0.1 }
-      );
-      obs.observe(hero);
-      return () => obs.disconnect();
-    }
-
-    const onScroll = () => {
-      setIsHeroVisible(window.scrollY < 200);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  // Removed isHeroVisible logic so the banner always shows
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
       {/* Green Top Banner - ADC Green */}
-      {isHydrated && (
-        <div
-          className={`bg-[#008751] text-white text-center transform transition-all duration-300 ease-in-out origin-top ${
-            isHeroVisible
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-full opacity-0 pointer-events-none"
-          }`}
-        >
-          <p className="text-sm md:text-base font-bold py-2">
-            Join the Rt. Hon. Chibuike Rotimi Amaechi Campaign Today!
-          </p>
-        </div>
-      )}
+      <div className="bg-[#008751] text-white text-center transition-all duration-300 ease-in-out origin-top translate-y-0 opacity-100">
+        <p className="text-sm md:text-base font-bold py-2">
+          Powered by Movement for Amaechi Presidency ( MAP )
+        </p>
+      </div>
 
       {/* Main Navigation */}
       <nav className="bg-white border-b border-gray-200 shadow-sm">
