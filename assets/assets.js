@@ -65,10 +65,16 @@ import Amaechi14 from "./Amaechi14.jpeg";
 import Emir from "./Emir.webp";
 import Grad from "./Grad.webp";
 import Amae from "./Amae.webp";
+import Pro1 from "./Pro1.jpeg";
+import Camp1 from "./Camp1.jpeg";
+import Camp2 from "./Camp2.jpeg";
 
 export const assets = {
   logo,
   Abujakaduna,
+  Pro1,
+  Camp1,
+  Camp2,
   Emir,
   Grad,
   Amae,
