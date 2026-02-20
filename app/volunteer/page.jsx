@@ -1,110 +1,6 @@
-/*
-================================================================================
-GOOGLE FORMS INTEGRATION SETUP GUIDE
-================================================================================
-
-STEP 1: CREATE YOUR GOOGLE FORM
---------------------------------
-1. Go to https://forms.google.com
-2. Click "+ Blank" to create a new form
-3. Title it "Amaechi 2027 Volunteer Application"
-4. Add these fields IN THIS EXACT ORDER:
-
-   Field 1: Full Name (Short answer) - REQUIRED
-   Field 2: Email Address (Short answer) - REQUIRED  
-   Field 3: Phone Number (Short answer) - REQUIRED
-   Field 4: State (Dropdown) - REQUIRED
-      Options: All 36 Nigerian states + FCT
-   Field 5: LGA (Short answer)
-   Field 6: Preferred Volunteer Role (Multiple choice) - REQUIRED
-      Options:
-      - Door-to-Door Canvassing
-      - Phone Banking  
-      - Social Media Advocacy
-      - Event Coordination
-      - Research & Data
-      - Fundraising
-      - Other
-   Field 7: Weekly Availability (Multiple choice) - REQUIRED
-      Options:
-      - 5-10 hours/week
-      - 10-15 hours/week
-      - 15-20 hours/week
-      - 20+ hours/week
-      - Flexible/Event-based
-   Field 8: Skills & Experience (Paragraph)
-   Field 9: Why do you want to volunteer? (Paragraph) - REQUIRED
-
-STEP 2: GET YOUR FORM ID
--------------------------
-1. Click "Send" button in top right
-2. Click the link icon
-3. Your URL will look like:
-   https://docs.google.com/forms/d/e/1FAIpQLSc.../viewform
-4. Copy the part after "/d/e/" and before "/viewform"
-   Example: 1FAIpQLSc... (this is your FORM_ID)
-
-STEP 3: GET ENTRY IDs (CRITICAL!)
-----------------------------------
-METHOD A - Using Pre-fill Link (RECOMMENDED):
-1. In your form, click the 3 dots menu (⋮) in top right
-2. Select "Get pre-filled link"
-3. Fill in DUMMY data for EVERY field:
-   - Full Name: Test
-   - Email: test@test.com
-   - Phone: 08012345678
-   - State: Lagos
-   - LGA: Ikeja
-   - Role: Door-to-Door Canvassing
-   - Availability: 10-15 hours/week
-   - Skills: Test skills
-   - Motivation: Test motivation
-4. Click "Get link" at bottom
-5. Copy the entire URL
-6. You'll see something like:
-   https://docs.google.com/forms/d/e/FORM_ID/viewform?
-   entry.123456789=Test&
-   entry.234567890=test@test.com&
-   entry.345678901=08012345678&
-   ...
-
-7. Extract EACH entry ID:
-   - entry.123456789 → Full Name
-   - entry.234567890 → Email
-   - entry.345678901 → Phone
-   - etc.
-
-METHOD B - Using Browser Inspector:
-1. Open your Google Form in browser
-2. Right-click and select "Inspect" (or press F12)
-3. Look for <input> tags with names like "entry.XXXXXXXXX"
-4. Match each entry to its field by looking at the labels
-
-STEP 4: UPDATE THE CODE BELOW
-------------------------------
-Replace these values in the code:
-- GOOGLE_FORM_ID: Your form ID from Step 2
-- All entry.XXXXXXXXX values with your actual entry IDs from Step 3
-
-STEP 5: TEST YOUR FORM
------------------------
-1. Fill out the form on your website
-2. Check your Google Form responses
-3. Verify all fields are captured correctly
-
-TROUBLESHOOTING:
-----------------
-- If submissions don't appear: Double-check ALL entry IDs
-- If some fields missing: Verify entry ID matches the correct field
-- If getting errors: Make sure form is set to "Accept responses"
-- Test with Google Form's preview mode first
-
-================================================================================
-*/
-
 'use client'
 import React, { useState } from "react";
-import { ArrowRight, Users, Heart, Clock, MapPin, Mail, CheckCircle, User, Send, Phone, Briefcase, Shield, Star, Megaphone, Calendar, BookOpen, Code, Pen, Target } from "lucide-react";
+import { ArrowRight, Users, Heart, Clock, MapPin, Mail, CheckCircle, User, Send, Phone, Briefcase, Shield, Star, Megaphone, Calendar, BookOpen, Target } from "lucide-react";
 
 const AmaechiVolunteer = () => {
   const [formData, setFormData] = useState({
@@ -112,32 +8,29 @@ const AmaechiVolunteer = () => {
     email: "",
     phone: "",
     state: "",
-    lga: "",
     role: "",
     availability: "",
     skills: "",
     motivation: ""
   });
   const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // ============================================================================
-  // REPLACE THESE WITH YOUR ACTUAL GOOGLE FORM VALUES
+  // GOOGLE FORMS INTEGRATION - WORKING CONFIGURATION
   // ============================================================================
   
-  const GOOGLE_FORM_ID = "YOUR_FORM_ID_HERE"; // Replace with your form ID
+  const GOOGLE_FORM_ID = "1FAIpQLSe-8BYnvfHrsZA-w2qgV8e5SILxzDAgzSW5l_nM_Sr14Wor5A";
   const GOOGLE_FORM_ACTION_URL = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
-  
+
   const FORM_FIELD_IDS = {
-    fullName: "entry.000000001",      // Replace with actual
-    email: "entry.000000002",         // Replace with actual
-    phone: "entry.000000003",         // Replace with actual
-    state: "entry.000000004",         // Replace with actual
-    lga: "entry.000000005",           // Replace with actual
-    role: "entry.000000006",          // Replace with actual
-    availability: "entry.000000007",  // Replace with actual
-    skills: "entry.000000008",        // Replace with actual
-    motivation: "entry.000000009"     // Replace with actual
+    fullName: "entry.529931322",
+    email: "entry.447580803",
+    phone: "entry.97834466",
+    state: "entry.1321817977",
+    role: "entry.1144489772",
+    availability: "entry.510445623",
+    skills: "entry.1016455141",
+    motivation: "entry.1440092537"
   };
 
   const nigerianStates = [
@@ -188,46 +81,52 @@ const AmaechiVolunteer = () => {
     }
   ];
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const googleFormData = new FormData();
-      googleFormData.append(FORM_FIELD_IDS.fullName, formData.fullName);
-      googleFormData.append(FORM_FIELD_IDS.email, formData.email);
-      googleFormData.append(FORM_FIELD_IDS.phone, formData.phone);
-      googleFormData.append(FORM_FIELD_IDS.state, formData.state);
-      googleFormData.append(FORM_FIELD_IDS.lga, formData.lga);
-      googleFormData.append(FORM_FIELD_IDS.role, formData.role);
-      googleFormData.append(FORM_FIELD_IDS.availability, formData.availability);
-      googleFormData.append(FORM_FIELD_IDS.skills, formData.skills);
-      googleFormData.append(FORM_FIELD_IDS.motivation, formData.motivation);
-
-      await fetch(GOOGLE_FORM_ACTION_URL, {
-        method: 'POST',
-        body: googleFormData,
-        mode: 'no-cors'
-      });
-
-      setSubmitted(true);
-      setIsSubmitting(false);
-      
-      setTimeout(() => setSubmitted(false), 7000);
-
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitted(true);
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitted(false), 7000);
-    }
-  };
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Create a hidden form to submit to Google Forms
+    const form = document.createElement('form');
+    form.action = GOOGLE_FORM_ACTION_URL;
+    form.method = 'POST';
+    form.target = 'hidden_iframe';
+    
+    // Add all form fields as hidden inputs
+    Object.keys(FORM_FIELD_IDS).forEach(key => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = FORM_FIELD_IDS[key];
+      input.value = formData[key];
+      form.appendChild(input);
+    });
+    
+    // Append form to body and submit
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+    
+    // Show success message
+    setSubmitted(true);
+    
+    // Reset form after delay
+    setTimeout(() => {
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        state: "",
+        role: "",
+        availability: "",
+        skills: "",
+        motivation: ""
+      });
+    }, 1000);
   };
 
   const resetForm = () => {
@@ -236,7 +135,6 @@ const AmaechiVolunteer = () => {
       email: "",
       phone: "",
       state: "",
-      lga: "",
       role: "",
       availability: "",
       skills: "",
@@ -254,7 +152,7 @@ const AmaechiVolunteer = () => {
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white rounded-full blur-3xl"></div>
         </div>
         
-        <div className="relative max-w-7xl mt-[-34] mx-auto px-6 md:px-16 lg:px-24 py-24 md:py-32 lg:py-40">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-16 lg:px-24 py-24 md:py-32 lg:py-40">
           <div className="max-w-4xl">
             <div className="inline-block mb-6">
               <span className="bg-[#FF6B35] text-white px-6 py-3 rounded-full font-black text-sm tracking-widest">
@@ -505,7 +403,7 @@ const AmaechiVolunteer = () => {
                       required
                       className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-xl focus:border-[#008751] focus:ring-2 focus:ring-[#008751]/20 focus:outline-none text-gray-900 font-semibold appearance-none bg-white"
                     >
-                      <option value="">Select your state</option>
+                      <option value="">Select State</option>
                       {nigerianStates.map((state) => (
                         <option key={state} value={state}>{state}</option>
                       ))}
@@ -514,25 +412,8 @@ const AmaechiVolunteer = () => {
                 </div>
               </div>
 
-              {/* LGA and Role */}
+              {/* Role and Availability */}
               <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm font-black text-gray-900 mb-3 tracking-wide">
-                    LOCAL GOVERNMENT AREA
-                  </label>
-                  <div className="relative">
-                    <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#008751]" size={20} />
-                    <input
-                      type="text"
-                      name="lga"
-                      value={formData.lga}
-                      onChange={handleChange}
-                      placeholder="Your LGA (optional)"
-                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-xl focus:border-[#008751] focus:ring-2 focus:ring-[#008751]/20 focus:outline-none text-gray-900 font-semibold"
-                    />
-                  </div>
-                </div>
-
                 <div>
                   <label className="block text-sm font-black text-gray-900 mb-3 tracking-wide">
                     PREFERRED ROLE *
@@ -546,38 +427,39 @@ const AmaechiVolunteer = () => {
                       required
                       className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-xl focus:border-[#008751] focus:ring-2 focus:ring-[#008751]/20 focus:outline-none text-gray-900 font-semibold appearance-none bg-white"
                     >
-                      <option value="">Select a role</option>
-                      {volunteerRoles.map((role) => (
-                        <option key={role.id} value={role.label}>
-                          {role.label}
-                        </option>
-                      ))}
+                      <option value="">Select Role</option>
+                      <option value="Door-to-Door Canvassing">Door-to-Door Canvassing</option>
+                      <option value="Phone Banking">Phone Banking</option>
+                      <option value="Social Media Advocacy">Social Media Advocacy</option>
+                      <option value="Event Coordination">Event Coordination</option>
+                      <option value="Research & Data">Research & Data</option>
+                      <option value="Fundraising">Fundraising</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                 </div>
-              </div>
 
-              {/* Availability */}
-              <div className="mb-6">
-                <label className="block text-sm font-black text-gray-900 mb-3 tracking-wide">
-                  WEEKLY AVAILABILITY *
-                </label>
-                <div className="relative">
-                  <Clock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#008751]" size={20} />
-                  <select
-                    name="availability"
-                    value={formData.availability}
-                    onChange={handleChange}
-                    required
-                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-xl focus:border-[#008751] focus:ring-2 focus:ring-[#008751]/20 focus:outline-none text-gray-900 font-semibold appearance-none bg-white"
-                  >
-                    <option value="">Select availability</option>
-                    <option value="5-10 hours/week">5-10 hours/week</option>
-                    <option value="10-15 hours/week">10-15 hours/week</option>
-                    <option value="15-20 hours/week">15-20 hours/week</option>
-                    <option value="20+ hours/week">20+ hours/week</option>
-                    <option value="Flexible/Event-based">Flexible/Event-based</option>
-                  </select>
+                <div>
+                  <label className="block text-sm font-black text-gray-900 mb-3 tracking-wide">
+                    WEEKLY AVAILABILITY *
+                  </label>
+                  <div className="relative">
+                    <Clock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#008751]" size={20} />
+                    <select
+                      name="availability"
+                      value={formData.availability}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-xl focus:border-[#008751] focus:ring-2 focus:ring-[#008751]/20 focus:outline-none text-gray-900 font-semibold appearance-none bg-white"
+                    >
+                      <option value="">Select Availability</option>
+                      <option value="5–10 hours/week">5–10 hours/week</option>
+                      <option value="10–15 hours/week">10–15 hours/week</option>
+                      <option value="15–20 hours/week">15–20 hours/week</option>
+                      <option value="20+ hours/week">20+ hours/week</option>
+                      <option value="Flexible / Event-based">Flexible / Event-based</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
@@ -615,21 +497,11 @@ const AmaechiVolunteer = () => {
               {/* Submit Button */}
               <button 
                 type="submit"
-                disabled={isSubmitting}
-                className={`w-full bg-gradient-to-r from-[#008751] to-[#006b40] text-white py-5 px-8 font-black text-xl tracking-wider hover:from-[#006b40] hover:to-[#008751] transition-all duration-300 rounded-full shadow-2xl hover:shadow-3xl flex items-center justify-center gap-3 group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                className="w-full bg-gradient-to-r from-[#008751] to-[#006b40] text-white py-5 px-8 font-black text-xl tracking-wider hover:from-[#006b40] hover:to-[#008751] transition-all duration-300 rounded-full shadow-2xl hover:shadow-3xl flex items-center justify-center gap-3 group"
               >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
-                    SUBMITTING...
-                  </>
-                ) : (
-                  <>
-                    <Send size={24} strokeWidth={2.5} />
-                    VOLUNTEER NOW
-                    <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform duration-300" strokeWidth={3} />
-                  </>
-                )}
+                <Send size={24} strokeWidth={2.5} />
+                SUBMIT APPLICATION
+                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform duration-300" strokeWidth={3} />
               </button>
 
               <p className="text-center text-sm text-gray-600 mt-6 font-semibold">
@@ -637,6 +509,9 @@ const AmaechiVolunteer = () => {
               </p>
             </form>
           )}
+
+          {/* Hidden iframe to avoid CORS */}
+          <iframe name="hidden_iframe" style={{ display: "none" }} title="hidden_iframe" />
         </div>
       </section>
 
